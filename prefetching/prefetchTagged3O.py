@@ -49,8 +49,8 @@ system.mem_mode = 'timing'
 
 # CPU Setup
 system.cpu = X86O3CPU()
-#system.cpu.icache_port = system.membus.cpu_side_ports
-#system.cpu.dcache_port = system.membus.cpu_side_ports
+# system.cpu.icache_port = system.membus.cpu_side_ports
+# system.cpu.dcache_port = system.membus.cpu_side_ports
 
 ## This is needed when we use x86 CPUs
 system.cpu.createInterruptController()
@@ -86,7 +86,7 @@ process = Process()
 
 ## Use a full path to the binary
 binary = args.binary
-process.cmd = [binary, args.binary_args]
+process.cmd = [binary] + args.binary_args.split()
 
 ## The necessary gem5 calls to initialize the workload and its threads
 system.workload = SEWorkload.init_compatible(binary)
